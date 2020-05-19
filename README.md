@@ -73,10 +73,29 @@ git branch -m <branchname2>  将当前分支重命名为branchname2
 git checkout -b <new_branch> <current_branchname>  在current_branchname 分支上创建一个名为new_branch的分支，同时切换到这个分支new_branch
 ```
 分支用法实操：
+```bash
+1.新建分支并切换该分支
+$ git checkout -b iss1
+Switched to a new branch 'iss1'
+
+2.列出所有分支，带 * 的是当期分支
+$ git branch
+* iss1
+  master
+现在就可以在iss1分支上就行提交
+3.
+```
+
+2020-05-19 13:40
+Create a new branch, this sentence is edit at iss1.
+iss1 分支随着工作的进展向前推进
+删除分支 出现 HEAD detached at 1418300
 
 
 2020-05-19 14:09
 这里是在 master 分支创建的新分支 hotfix 上：
 this is a sentence edited at hotfix.
 
+2020-05-19 13:40
+Git has a mutable index called stage
 
