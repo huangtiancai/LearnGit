@@ -74,3 +74,9 @@ git checkout -b <new_branch> <current_branchname>  在current_branchname 分支�
 ```
 分支用法实操：
 
+
+2020-05-19 14:09
+这里是在 master 分支创建的新分支 hotfix 上：
+this is a sentence edited at hotfix.
+
+
