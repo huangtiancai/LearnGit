@@ -1,5 +1,4 @@
-git is a distributed version control system
-Git is free software
+参考：https://www.jianshu.com/p/fe038a97bb3c
 
 git的简单操作
 1. 创建本地仓库：
