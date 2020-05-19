@@ -89,3 +89,5 @@ $ git branch
 2020-05-19 13:40
 Create a new branch, this sentence is edit at iss1.
 iss1 分支随着工作的进展向前推进
+
+删除分支 出现 HEAD detached at 1418300
