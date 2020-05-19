@@ -36,9 +36,27 @@ $ git commit -m 'add README.md'
 
 5. 查看修改的内容
 `git status`命令的输出可能比较模糊，如果需要知道具体修改了什么地方 => 使用 `git diff` 命令
+命令：`git diff` 或 `git diff <file>`
 这个命令通常用来回答两个问题：
 - 当前做的哪些更新还未暂存？
 - 有哪些更新已经暂存还未提交？
-`git status`通过列出文件名的方式回答了这个问题，`git diff`将通过文件补丁的格式显示具体哪些行发生了变化
+区别：
+`git status`通过列出文件名的方式回答了这个问题；
+`git diff`将通过文件补丁的格式显示具体哪些行发生了变化
+`git diff`比较的是工作目录中文件和暂存区域内文件的差异，也就是修改之后还没有暂存起来的修改
 
-修改
+提交修改和提交新文件步骤一样:
+第一步是git add <file>;
+第二部是git commit -m
+合并：`git commit -a -m '描述信息'`
+>git commit -a -m "<distriptive message>"只对已跟踪的文件有效，且一次提交所有已修改、未暂存的文件
+
+提交后
+```bash
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+$ git diff
+....无打印
+```
