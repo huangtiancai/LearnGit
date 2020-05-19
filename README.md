@@ -161,25 +161,5 @@ git merge iss1
 
 16. 打开冲突文件
 vim README.md
-手动解决冲突部分，同时删除 <<<<<、=======、>>>>>>> 这些
-
-
-
-
-
-
+手动解决冲突部分，同时删除 <<<<<、=======、>>>>>>> 这些内容
 ```
-
-2020-05-19 13:40
-Create a new branch, this sentence is edit at iss1.
-iss1 分支随着工作的进展向前推进
-删除分支 出现 HEAD detached at 1418300
-
-
-2020-05-19 14:09
-这里是在 master 分支创建的新分支 hotfix 上：
-this is a sentence edited at hotfix.
-
-2020-05-19 13:40
-Git has a mutable index called stage
-
