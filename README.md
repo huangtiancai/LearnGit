@@ -1,6 +1,6 @@
 参考：https://www.jianshu.com/p/fe038a97bb3c
 
-git的简单操作
+### 创建版本库
 1. 创建本地仓库：
 - mkdir learnGit
 - cd learnGit
@@ -9,10 +9,14 @@ git的简单操作
 2. 克隆项目（远程仓库已经存在）
 - git clone ...
 
-3.添加文件和提交更新
+
+### 工作流
+
+### 添加文件与提交更新
+1. 添加文件和提交更新
 - vim README.md   => 修改内容，无README.md会自动创建
 
-4. 查看仓库状态
+2. 查看仓库状态
 - git status  查看仓库状态
 - git add <file> 跟踪文件，并将文件添加到暂存区
 - git rm <file>  移除跟踪的文件
@@ -33,9 +37,8 @@ $ git commit -m 'add README.md'
 注意：每次修改文件都需要：`git add <file>` ,将修改过的文件添加暂存区，然后再提交:`git commit -m 'update README.md'`
 
 
-5. 查看修改的内容
+3. 查看修改的内容
 `git status`命令的输出可能比较模糊，如果需要知道具体修改了什么地方 => 使用 `git diff` 命令
-命令：`git diff` 或 `git diff <file>`
 这个命令通常用来回答两个问题：
 - 当前做的哪些更新还未暂存？
 - 有哪些更新已经暂存还未提交？
@@ -49,6 +52,16 @@ $ git commit -m 'add README.md'
 第二部是git commit -m
 合并：`git commit -a -m '描述信息'`
 >git commit -a -m "<distriptive message>"只对已跟踪的文件有效，且一次提交所有已修改、未暂存的文件
+
+有多种方法查看两次提交间的差异：
+- git diff：工作目录与暂存区差异。如果文件还未被跟踪，则无法查看。
+- git diff HEAD：工作目录、暂存区与当前分支最近一次提交（HEAD）的差异。
+- git diff --staged：暂存区与HEAD间差异。在低版本的Git中，使用的是git diff --cached命令。
+- git diff <commit>：当前目录与commit快照间差异
+
+查看具体某个文件的变化：`git diff <file>` 或 `git diff -- <file>`
+`git diff --staged -- README.md`命令查看暂存区与HEAD间README.md差异。
+
 
 提交后
 ```bash
@@ -163,3 +176,4 @@ git merge iss1
 vim README.md
 手动解决冲突部分，同时删除 <<<<<、=======、>>>>>>> 这些内容
 ```
+
