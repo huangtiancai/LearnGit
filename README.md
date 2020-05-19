@@ -18,5 +18,11 @@ git的简单操作
 - git add <file> 跟踪文件，并将文件添加到暂存区
 - git rm <file>  移除跟踪的文件
 - git status     再运行git status查看仓库状态：显示README.md在暂存区中，将处于下一次提交的快照中
-- git commit -m add "add distributed"  提交修改
+- git commit -m add "add README.md"  提交修改
+```bash
+$ git commit -m 'add README.md' 
+[master (root-commit) 70ee8bf] add README.md  
+1 file changed, 22 insertions(+)  
+create mode 100644 README.md
+```
 - git status     提交后再查看仓库状态：可以看到当前没有需要提交的修改，且工作目录是干净的（working tree clean）
