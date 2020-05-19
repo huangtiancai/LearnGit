@@ -26,3 +26,10 @@ $ git commit -m 'add README.md'
 create mode 100644 README.md
 ```
 - git status     提交后再查看仓库状态：可以看到当前没有需要提交的修改，且工作目录是干净的（working tree clean）
+```bash
+$ git commit -m 'add README.md' 
+[master ac29c20] add README.md
+1 file changed, 7 insertions(+), 1 deletion(-)
+```
+注意：每次修改文件都需要：`git add <file>` ,将修改过的文件添加暂存区，然后再提交:`git commit -m 'update README.md'`
+
