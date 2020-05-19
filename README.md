@@ -67,10 +67,12 @@ git branch                   列出仓库中所有分支
 git branch <branchname>      创建一个名为branchname的分支，但不会自动切换到这个分支
 git checkout <branchname>    切换到分支
 git checkout -b <branchname> 创建一个名为branchname的分支，同时切换到这个分支
+git checkout -b <new_branch> <current_branchname>  在current_branchname 分支上创建一个名为new_branch的分支，同时切换到这个分支
+
 git branch -d <branchname>   删除一个名为branchname的分支（安全操作：Git会阻止删除包含未合并更改的分支）
 git branch -D <branchname>   删除一个名为branchname的分支（忽略未合并的更改，强制删除branch分支）
 git branch -m <branchname2>  将当前分支重命名为branchname2
-git checkout -b <new_branch> <current_branchname>  在current_branchname 分支上创建一个名为new_branch的分支，同时切换到这个分支new_branch
+
 ```
 分支用法实操：
 ```bash
