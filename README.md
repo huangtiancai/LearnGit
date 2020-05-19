@@ -11,6 +11,11 @@
 
 
 ### 工作流
+1. Working Directory 工作目录
+   git add files / get reset -- files
+2. Stage(Index)      暂存区（预期下一次的提交）
+   git commit / git checkout -- files
+3. History           保存提交历史 
 
 ### 添加文件与提交更新
 1. 添加文件和提交更新
@@ -59,7 +64,7 @@ $ git commit -m 'add README.md'
 - git diff --staged：暂存区与HEAD间差异。在低版本的Git中，使用的是git diff --cached命令。
 - git diff <commit>：当前目录与commit快照间差异
 
-查看具体某个文件的变化：`git diff <file>` 或 `git diff -- <file>`
+查看具体某个文件的变化：`git diff <file>` 或 `git diff -- <file>`  `--` 标记文件名称
 `git diff --staged -- README.md`命令查看暂存区与HEAD间README.md差异。
 
 
@@ -73,7 +78,7 @@ $ git diff
 ....无打印
 ```
 
-6. 分支
+### 分支
 分支的用法：
 ```bash
 git branch                   列出仓库中所有分支
@@ -85,7 +90,6 @@ git checkout -b <new_branch> <current_branchname>  在current_branchname 分支�
 git branch -d <branchname>   删除一个名为branchname的分支（安全操作：Git会阻止删除包含未合并更改的分支）
 git branch -D <branchname>   删除一个名为branchname的分支（忽略未合并的更改，强制删除branch分支）
 git branch -m <branchname2>  将当前分支重命名为branchname2
-
 ```
 
 简单的分支新建、分支合并的例子：
@@ -175,5 +179,24 @@ git merge iss1
 16. 打开冲突文件
 vim README.md
 手动解决冲突部分，同时删除 <<<<<、=======、>>>>>>> 这些内容
-```
+
+
+
+### 储藏
+
+
+### 同步更改
+
+
+
+
+
+
+
+
+
+
+
+
+
 
