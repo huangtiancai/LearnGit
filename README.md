@@ -74,18 +74,100 @@ git branch -D <branchname>   删除一个名为branchname的分支（忽略未�
 git branch -m <branchname2>  将当前分支重命名为branchname2
 
 ```
-分支用法实操：
-```bash
-1.新建分支并切换该分支
+
+简单的分支新建、分支合并的例子：
+需求：
+1. 开发app
+2. 为实现一个新的需求，创建一个分支。
+3. 在刚创建的分支上开展工作
+
+正在此时，接到通知需要立即修复一个很严重的bug，你将按照下面方式来处理：
+1. 切换到你的线上分支（production branch）。
+2. 为这个修补任务新建一个分支，并在其中修复bug。
+3. 通过测试后，切换回线上分支，然后合并这个修补分支，最后推送到线上分支。
+4. 删除修改bug创建的分支。切换回最初工作的分支上，继续工作
+
+实操:
+1. 新建分支并切换到该分支
 $ git checkout -b iss1
 Switched to a new branch 'iss1'
 
-2.列出所有分支，带 * 的是当期分支
+2. 列出所有分支，带 * 的是当前分支
 $ git branch
 * iss1
   master
 现在就可以在iss1分支上就行提交
-3.
+
+3. 修改文件
+vim README.md
+
+4. git commit -a -m '描述'
+iss1分支随着工作的进展向前推进
+![iss1分支](https://upload-images.jianshu.io/upload_images/3151492-b67e382a716e0de4.png?imageMogr2/auto-orient/strip|imageView2/2/w/800)
+
+5. 在master分支上创建一个分支(注意和新建分支的区别)，用于修复bug，最后将该分支合并到master分支
+注意：
+在切换到其它分支前，需要确保当前分支工作目录、暂存区是干净的，否则可能会和你即将检出的分支产生冲突，从而阻止Git切换到该分支，可以通过git stash保存进度，也可以用git commit --amend修补提交。
+
+6. 在master分支上创建一个`hotfix`分支，在该分支上解决问题
+$ git checkout -b hotfix master
+Switched to a new branch 'hotfix'
+
+7. 修改文件
+vim REANME.md
+
+8. 在hotfix分支添加到暂存区并提交更新
+git commit -a -m '描述'
+
+![hotfix分支](https://upload-images.jianshu.io/upload_images/3151492-8098f7019221e27b.png?imageMogr2/auto-orient/strip|imageView2/2/w/800)
+
+
+
+9. 合并分支，首先切换到需要合并的分支
+git checkout master
+
+10. 将hotfix合并到master
+git merge hotfix
+出现：Fast-forward 关键词
+
+由于master分支指向的提交是hotfix分支提交的直接上游，所以，Git只是简单的将指针向前移动。
+也就是说试图合并两个分支时，如果顺着一个分支走下去，能够到达另一个分支，那么Git在合并两者时，只会简单的将指针向前推进（右移），因为这种合并没有要解决的冲突conflict，称为快进fast-forward。
+
+![合并](https://upload-images.jianshu.io/upload_images/3151492-d1fe71e097a9db33.png?imageMogr2/auto-orient/strip|imageView2/2/w/1016)
+
+11. 现在切换到 `iss1` 分支
+git checkout iss1
+
+12. 再编辑，添加暂存，提交更新
+vim README.md
+git commit -a -m '描述'
+
+13. 检出master
+git checkout master
+
+14. 将iss1与master合并
+git merge iss1
+一般这里会直接自动合并
+
+注意这里与第10步不同 => 三方合并
+![三方合并](https://upload-images.jianshu.io/upload_images/3151492-f0755700531534b4.png?imageMogr2/auto-orient/strip|imageView2/2/w/1011)
+
+15. 解决合并冲突
+如果对同一个文件的同一个部分进行了不同的修改，Git在合并时将产生冲突conflict，不能自动合并
+但是没有自动创建一个新的合并提交。Git会暂停下来，等待你去解决合并过程中产生的冲突
+
+使用 git status 查看因包含冲突而处于未合并（unmerged）状态的文件
+使用 git diff 查看具体冲突部分
+
+16. 打开冲突文件
+vim README.md
+手动解决冲突部分，同时删除 <<<<<、=======、>>>>>>> 这些
+
+
+
+
+
+
 ```
 
 2020-05-19 13:40
