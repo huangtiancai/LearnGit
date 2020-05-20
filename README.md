@@ -329,9 +329,6 @@ remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 To https://github.com/huangtiancai/LearnGit.git
    ec9fd32..c2fe6ca  master -> master
 Branch 'master' set up to track remote branch 'master' from 'origin'.
-
-
-
 ````
 
 
