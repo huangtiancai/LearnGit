@@ -299,7 +299,7 @@ git remote add orgin https://github.com/huangtiancai/LearnGit.git
 如果添加远程主机：
 打印：`fatal: remote origin already exists.`
 
-2.添加完成后，可以查看到远程主机网址
+2.添加完成后，可以查看到远程主机网址（使用GitHub仓库地址）
 $ git remote -v
 origin  https://github.com/huangtiancai/LearnGit.git (fetch)
 origin  https://github.com/huangtiancai/LearnGit.git (push)
@@ -310,9 +310,8 @@ $ git push -u origin master:master
 Everything up-to-date
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 
-原因：工作目录在于推送的分支没有做commit操作
-说明有修改未提交暂存和提交更新，可以每次推送前使用 `git status` 或 `git diff` 查看下状态
-这里确实有修改文件，但是未提交
+原因：工作目录好像是最新的，实际上还是有修改未提交暂存和提交更新，所以习惯每次推送前使用 `git status` 或 `git diff` 查看下状态
+这里确实有修改文件，但是未暂存提交
 
 4. git status / git diff
 
