@@ -186,6 +186,149 @@ vim README.md
 
 
 ### 同步更改
+#### 如何同步修改
+1. 远程分支
+列出所有远程主机
+ `git remote`
+origin
+
+这里的origin就是主机
+
+查看远程主机网址：
+`git remote -v`
+origin  https://github.com/huangtiancai/LearnGit.git (fetch)
+origin  https://github.com/huangtiancai/LearnGit.git (push)
+
+查看主机详细信息：
+`git remote show origin`
+
+添加远程主机：
+`git remote add <主机名> <网址>`
+
+修改远程主机名称：
+`git remote rename <原主机名> <新主机名>`
+
+2. 取回更新
+2.1 将远程主机的指定分支更新取回本地，忽略分支名则取回所有分支的更新：
+`git fetch <远程主机名> <分支名>` => `git fetch origin master`
+
+-r选项用以标记查看远程分支，-a选项标记查看所有分支：
+`git branch -r`
+  origin/master
+
+`git branch -a`
+  iss1
+* master
+  remotes/origin/master
+
+2.2 在取回的远程主机`origin/master`基础上，创建一个新的分支`newBranch`
+`git branch -b newBranch origin/master`
+
+在本地分支上合并远程分支
+`git merge origin/master`
+
+2.3 取回更新同时与本地分支合并
+
+$ git fetch origin <远程分支名>
+$ git merge origin/<远程分支名>
+
+取回指定远程主机的指定分支的更新，再与本地的指定分支合并（上面两个命令的合并）
+最全命令形式：`git pull <远程主机名> <远程分支名>:<本地分支名>`
+
+- 远程分支与指定分支合并，这里以远程master分支 合并到 本地master分支为例
+  如：`git pull origin master:master`
+- 如果远程分支与当前分支合并，则本地分支名部分可以省略，如：`git pull origin master`
+- 如果当前分支与远程分支存在追踪关系，则可以省略远程分支名，如：`git pull origin`
+- 如果当前只有一个追踪分支，则主机名也可以省略，即：`git pull`
+- 如果使用git clone创建的仓库，Git会自动在本地分支master和远程分支origin/master间建立追踪关系（tracking）
+
+- Git也允许手动建立追踪关系：
+`$ git branch --set-upstream-to <远程主机名>/<远程分支名> <本地分支名>`
+如果省略了最后一项的<本地分支名>，则默认将当前本地分支与指定远程分支建立追踪关系
+
+2.4 推送更新到远程仓库
+git push用于将本地分支更新，推送到远程仓库（格式与git pull有些像）
+分支推送、拉取顺都是<来源地>:<目的地>
+git pull：`git pull <远程主机名> <远程分支名>:<本地分支名>`
+git push：`git push <远程主机名> <本地分支名>:<远程分支名>`
+
+最全命令形式：`git push <远程主机名> <本地分支名>:<远程分支名>`
+- 如果省略远程分支名，则表示将本地分支推送至与其存在追踪关系的远程分支
+- 如果该远程分支不存在，则会自动创建。即：git push <远程主机名> <本地分支>
+  `git pull <远程主机名> <本地分支名>`
+- 如果当前分支与远程分支间存在追踪关系，则本地分支和远程分支都可以省略
+  `git push <远程主机名>`
+- `-u`选项表示推送本地更新的同时，指定`origin`为默认主机：
+  `git push -u origin <本地分支名>:<远程分支名>`
+
+- 删除指定远程主机的指定远程分支
+  `git push <远程主机名> --delete <远程分支名>`
+- 推送时省略本地分支名等效于删除指定远程分支，因为这等同于同送一个空的本地分支到远程分支
+  `git push <远程主机名> :<远程分支名>`
+
+
+>不带任何参数的git push默认只推送当前分支，称为simple方式。
+此外，还有matching方式,matching方式默认推送所有有追踪关系的本地分支。
+Git 2.0版本之前，默认使用matching方式，现在默认使用simple方式。如需修改，使用如下命令：
+```bash
+$ git config --global push.default matching
+$ git config --global push.default simple
+```
+
+将本地所有分支推送到远程主机，不考虑是否存在对应远程分支
+ `git push --all <远程主机名>`
+
+强制推送本地更新到远程主机(避免使用)
+ `git push --force <远程主机名>`
+
+>如果远程主机版本比本地版本更新，推送时Git会报错，要求先取回更新在本地合并，然后再推送到远程主机;
+ 这时，如果你一定要推送，可以使用--force选项。
+ 使用--force选项进行推送时，会导致远程主机上内容被覆盖，应尽量避免使用--force选项，除非你特别确定。
+
+
+2. 具体应用实例
+使用GitHub作我们的远程仓库，与本地仓库同步
+在GitHub创建一个名为LearnGit的空仓库，与本地LearnGit仓库同步
+连接GitHub仓库，还需要创建SSH Key，把公钥添加至GitHub
+
+```bash
+1.添加远程主机:
+git remote add <主机名> <网址>
+git remote add orgin https://github.com/huangtiancai/LearnGit.git
+
+如果添加远程主机：
+打印：`fatal: remote origin already exists.`
+
+2.添加完成后，可以查看到远程主机网址
+$ git remote -v
+origin  https://github.com/huangtiancai/LearnGit.git (fetch)
+origin  https://github.com/huangtiancai/LearnGit.git (push)
+
+3.推送master分支到远程仓库
+$ git push -u origin master:master
+Everything up-to-date
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+4.
+
+
+````
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
 
 
 
