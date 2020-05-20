@@ -306,10 +306,30 @@ origin  https://github.com/huangtiancai/LearnGit.git (push)
 
 3.推送master分支到远程仓库
 $ git push -u origin master:master
+打印如下
 Everything up-to-date
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 
-4.
+根本原因在于推送的分支没有做commit操作
+说明有修改未提交暂存和提交更新，可以每次推送前使用 `git status` 或 `git diff` 查看下状态
+这里确实有修改文件，但是未提交
+
+4. git status / git diff
+
+5. git commit -a -m 'update README.md'
+
+6. 再次推送
+$ git push -u origin master:master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 2.29 KiB | 586.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/huangtiancai/LearnGit.git
+   ec9fd32..c2fe6ca  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
 
 
 ````
