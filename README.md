@@ -310,7 +310,7 @@ $ git push -u origin master:master
 Everything up-to-date
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 
-根本原因在于推送的分支没有做commit操作
+原因：工作目录在于推送的分支没有做commit操作
 说明有修改未提交暂存和提交更新，可以每次推送前使用 `git status` 或 `git diff` 查看下状态
 这里确实有修改文件，但是未提交
 
