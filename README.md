@@ -18,7 +18,7 @@ Git-是一个免费、开源的分布式版本控制系统
 ## Git安装
 
 ## Git常用命令
-常用命令：
+### 常用命令：
 ```bash
 git config --global user.name 用户名
 git config --global user.email 邮箱
@@ -28,9 +28,11 @@ git add 文件名 / git add .
 git commit -m "日志信息" 文件名 / git commit -m "日志信息"
 git reflog
 git reset --hard 版本号
+git push
 ```
 
-常用命令详解：
+### 常用命令详解：
+1. 设置用户签名
 ```bash
 # 设置用户信息
 git config --global user.name 用户名
@@ -43,14 +45,128 @@ cat ~/.gitconfig
 * 签名的作用是区分不同操作者身份。用户的签名信息在每一个版本的提交信息中能够看到，以此确认本次提交是谁做的。
 * Git 首次安装必须设置一下用户签名，否则无法提交代码。
 * 这里设置的用户签名和将来登录 GitHub (或其它代码托管中心)的账号没有任何关系。
+```
 
-
-# 初始化本地库
+2. 初始化本地库
+```bash
 git init
 
-# 
+生成 .git 目录， windows默认隐藏，查看/隐藏的项目 勾选上
+```
 
+3. 查看本地库状态
 git status
+
+```bash
+git status
+
+# 空目录先查看状态
+$ git status
+
+On branch master # 当前分支
+
+No commits yet   # 目前还没有提交过任何文件
+
+nothing to commit (create/copy files and use "git add" to track) # 说明可以创建文件并追踪它
+
+# 新增文件
+$ vi hello.txt
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed) # 文件未被git追踪，使用 git add 去追踪
+        hello.txt                                                # 红色字体
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+4. 添加暂存区
+git add 文件名
+
+```bash
+$ git add hello.txt
+
+warning: LF will be replaced by CRLF in hello.txt.      # 换行符转换
+The file will have its original line endings in your working directory
+
+# 再次查看状态
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:    
+  (use "git rm --cached <file>..." to unstage)  # 文件已经被git追踪（文件存在暂存区，可以 通过命令 git rm --cached <file>... 解除跟踪）
+        new file:   hello.txt                   # 绿色字体 
+
+# 删除暂存区的文件（解除跟踪）
+$ git rm --cached hello.txt
+rm 'hello.txt'
+
+# 删除暂存区的文件，不影响工作区的文件，验证如下
+$ ll
+total 1
+-rw-r--r-- 1 htc 197121 231  5月  8 20:40 hello.txt # 工作区的文件不受影响
+
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)  # 仍然提示 文件未被git追踪
+        hello.txt                                                 # 红色字体
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+# 继续添加文件到暂存区
+git add hello.txt
+git status
+```
+
+5. 提交到本地库
+git commit -m "日志信息" 文件名
+
+```bash
+$ git commit -m "first commit" hello.txt
+warning: LF will be replaced by CRLF in hello.txt.
+The file will have its original line endings in your working directory
+[master (root-commit) 5800e8b] first commit    # 5800e8b：版本号
+ 1 file changed, 21 insertions(+)
+ create mode 100644 hello.txt
+
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+# 查看日志信息
+$ git reflog
+5800e8b (HEAD -> master) HEAD@{0}: commit (initial): first commit  # 5800e8b 版本号（完整的版本号前7位）
+
+# 查看详细日志信息
+$ git log
+commit 5800e8b232da589ba75f5e9ae1bc78af92c17833 (HEAD -> master)   # 完整的版本号
+Author: huangtiancai <1812869775@qq.com>
+Date:   Sun May 8 21:10:31 2022 +0800
+
+    first commit
+
+
+
+```
+
+
+
+
+
+
+
+
+
+```bash
 git add 文件名 / git add .
 git commit -m "日志信息" 文件名 / git commit -m "日志信息"
 git reflog
@@ -60,7 +176,8 @@ git reset --hard 版本号
 token
 
 
-显示目录命令
+
+5. 显示目录命令
 
 ```bash
 $ ls
