@@ -154,8 +154,56 @@ Date:   Sun May 8 21:10:31 2022 +0800
 
     first commit
 
+```
 
+6. 修改文件
 
+```bash
+$ vim hello.txt
+
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.txt             # 红色字体 
+
+$ git add hello.txt
+warning: LF will be replaced by CRLF in hello.txt.
+The file will have its original line endings in your working directory
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   hello.txt
+
+$ git commit -m "second commit" 
+[master fcff341] second commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)    # git修改 = 删除+新增
+
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+$ git reflog
+fcff341 (HEAD -> master) HEAD@{0}: commit: second commit
+5800e8b HEAD@{1}: commit (initial): first commit
+
+$ git log
+commit fcff341b674296a718820f395e2852125a6d979b (HEAD -> master)
+Author: huangtiancai <1812869775@qq.com>
+Date:   Sun May 8 21:24:43 2022 +0800
+
+    second commit
+
+commit 5800e8b232da589ba75f5e9ae1bc78af92c17833
+Author: huangtiancai <1812869775@qq.com>
+Date:   Sun May 8 21:10:31 2022 +0800
+
+    first commit
+
+    
 ```
 
 
