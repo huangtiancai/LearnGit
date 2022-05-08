@@ -1,3 +1,57 @@
+git
+github
+gitee
+gitlab
+
+## Git概述
+Git-是一个免费、开源的分布式版本控制系统
+1. Git工作机制
+工作区（代码编辑区） -> 暂存区（临时存储） -> 本地库（产生历史版本）-> 远程库
+
+2. 代码托管中心
+基于网络服务器的远程代码仓库，一般称为`远程库`
+
+局域网：GitLab
+互联网：Github、Gitee
+
+
+## Git安装
+
+## Git常用命令
+```bash
+# 设置用户信息
+git config --global user.name 用户名
+git config --global user.email 邮箱
+
+# windows家目录下的配置文件 .gitconfig 查看配置信息
+cat ~/.gitconfig
+
+# 说明
+签名的作用是区分不同操作者身份。用户的签名信息在每一个版本的提交信息中能够看到，以此确认本次提交是谁做的。
+* Git 首次安装必须设置一下用户签名，否则无法提交代码。
+* 这里设置的用户签名和将来登录 GitHub (或其它代码托管中心)的账号没有任何关系。
+
+
+git init
+git status
+git add 文件名 / git add .
+git commit -m "日志信息" 文件名 / git commit -m "日志信息"
+git reflog
+git reset --hard 版本号
+```
+
+token
+
+## Git分支操作
+
+## Git团队协作机制
+
+## GitHub、Gitee、GitLab 代码托管你台使用
+
+
+
+
+
 参考：https://www.jianshu.com/p/fe038a97bb3c
 
 ### 创建版本库
