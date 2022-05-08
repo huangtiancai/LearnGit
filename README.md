@@ -18,6 +18,19 @@ Git-是一个免费、开源的分布式版本控制系统
 ## Git安装
 
 ## Git常用命令
+常用命令：
+```bash
+git config --global user.name 用户名
+git config --global user.email 邮箱
+git init
+git status
+git add 文件名 / git add .
+git commit -m "日志信息" 文件名 / git commit -m "日志信息"
+git reflog
+git reset --hard 版本号
+```
+
+常用命令详解：
 ```bash
 # 设置用户信息
 git config --global user.name 用户名
@@ -27,12 +40,16 @@ git config --global user.email 邮箱
 cat ~/.gitconfig
 
 # 说明
-签名的作用是区分不同操作者身份。用户的签名信息在每一个版本的提交信息中能够看到，以此确认本次提交是谁做的。
+* 签名的作用是区分不同操作者身份。用户的签名信息在每一个版本的提交信息中能够看到，以此确认本次提交是谁做的。
 * Git 首次安装必须设置一下用户签名，否则无法提交代码。
 * 这里设置的用户签名和将来登录 GitHub (或其它代码托管中心)的账号没有任何关系。
 
 
+# 初始化本地库
 git init
+
+# 
+
 git status
 git add 文件名 / git add .
 git commit -m "日志信息" 文件名 / git commit -m "日志信息"
@@ -41,6 +58,53 @@ git reset --hard 版本号
 ```
 
 token
+
+
+显示目录命令
+
+```bash
+$ ls
+app.js  app.txt  README.md
+
+$ ls -a
+./  ../  .git/  app.js  app.txt  README.md
+
+
+$ ls -l
+total 18
+-rw-r--r-- 1 htc 197121    31  5月  8 15:50 app.js
+-rw-r--r-- 1 htc 197121   391  5月  8 15:50 app.txt
+-rw-r--r-- 1 htc 197121 16371  5月  8 20:22 README.md
+
+# ls -al = ls -la
+$ ls -al
+total 30
+drwxr-xr-x 1 htc 197121     0  5月  8 16:01 ./
+drwxr-xr-x 1 htc 197121     0  5月  8 17:16 ../
+drwxr-xr-x 1 htc 197121     0  5月  8 17:45 .git/
+-rw-r--r-- 1 htc 197121    31  5月  8 15:50 app.js
+-rw-r--r-- 1 htc 197121   391  5月  8 15:50 app.txt
+-rw-r--r-- 1 htc 197121 16381  5月  8 20:24 README.md
+
+
+# ls -l 缩写
+$  ll 
+total 18
+-rw-r--r-- 1 htc 197121    31  5月  8 15:50 app.js
+-rw-r--r-- 1 htc 197121   391  5月  8 15:50 app.txt
+-rw-r--r-- 1 htc 197121 16381  5月  8 20:24 README.md
+
+$ ll -a
+total 30
+drwxr-xr-x 1 htc 197121     0  5月  8 16:01 ./
+drwxr-xr-x 1 htc 197121     0  5月  8 17:16 ../
+drwxr-xr-x 1 htc 197121     0  5月  8 17:45 .git/
+-rw-r--r-- 1 htc 197121    31  5月  8 15:50 app.js
+-rw-r--r-- 1 htc 197121   391  5月  8 15:50 app.txt
+-rw-r--r-- 1 htc 197121 16381  5月  8 20:25 README.md
+
+```
+
 
 ## Git分支操作
 
